@@ -1128,8 +1128,6 @@ sub ping_resource {
     my $cb = ref($_[-1]) eq 'CODE' ? pop : \&AnyEvent::MySQL::_empty_cb;
     my ($dbh) = @_;
 
-    use Data::Dumper;
-
     _push_task($dbh, [TXN_TASK, sub {
         my $next_act = shift;
         AnyEvent::MySQL::Imp::send_packet($dbh->{_}[HDi], 0, AnyEvent::MySQL::Imp::COM_PING);
